@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#2d3480">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="manifest.json">
+  <title>SOGM — Chargement</title>
+  <link rel="icon" type="image/png" href="img/icon-192.png">
+  <link rel="apple-touch-icon" href="img/icon-192.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="com-page role-page">
+  <header class="topbar">
+    <div class="tb-left"><img src="img/logo-sm.png" class="tb-logo" alt="SO.G.M"> <span class="muted" id="userName"></span></div>
+    <nav class="tabs">
+      <button class="tab active" data-view="todo">À charger <span class="tab-count" id="cTodo"></span></button>
+      <button class="tab" data-view="deliver">À livrer <span class="tab-count" id="cDeliver"></span></button>
+      <button class="tab" data-view="history">Historique</button>
+    </nav>
+    <button class="btn btn-light btn-sm" id="logoutBtn">Déconnexion</button>
+  </header>
+
+  <section id="view-todo" class="view active">
+    <div class="list-head"><h2>Camions à charger</h2></div>
+    <div class="chg-cards" id="todoList"></div>
+  </section>
+
+  <section id="view-deliver" class="view">
+    <div class="list-head"><h2>Chargés — en attente de confirmation de livraison</h2></div>
+    <div class="chg-cards" id="deliverList"></div>
+  </section>
+
+  <section id="view-history" class="view">
+    <div class="list-head"><h2>Chargements livrés</h2></div>
+    <div id="fbHist"></div>
+    <div class="chg-cards" id="historyList"></div>
+  </section>
+
+  <script src="js/store.js"></script>
+  <script src="js/operateur.js"></script>
+</body>
+</html>

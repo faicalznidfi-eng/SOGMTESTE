@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2d3480">
+  <link rel="manifest" href="manifest.json">
+  <title>SOGM — Vendeur</title>
+  <link rel="icon" type="image/png" href="img/icon-192.png">
+  <link rel="apple-touch-icon" href="img/icon-192.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="com-page role-page">
+  <header class="topbar">
+    <div class="tb-left"><img src="img/logo-sm.png" class="tb-logo" alt="SO.G.M"> <span class="muted" id="userName"></span></div>
+    <nav class="tabs">
+      <button class="tab active" data-view="pending">À valider <span class="tab-count" id="cPending"></span></button>
+      <button class="tab" data-view="validated">Validées <span class="tab-count" id="cValidated"></span></button>
+      <button class="tab" data-view="loadings">Chargements</button>
+      <button class="tab" data-view="credits">Crédits <span class="tab-count" id="cCredits"></span></button>
+      <button class="tab" data-view="cheques">Chèques <span class="tab-count" id="cCheques"></span></button>
+      <button class="tab" data-view="direct">＋ Chargement direct</button>
+    </nav>
+    <button class="btn btn-light btn-sm" id="logoutBtn">Déconnexion</button>
+  </header>
+
+  <section id="view-pending" class="view active">
+    <div class="list-head"><h2>Commandes à valider</h2></div>
+    <div id="fbPending"></div>
+    <div class="out-note" id="notePending"></div>
+    <div class="order-cards" id="pendingList"></div>
+  </section>
+
+  <section id="view-validated" class="view">
+    <div class="list-head"><h2>Commandes validées — à envoyer au chargement</h2></div>
+    <div id="fbValidated"></div>
+    <div class="out-note" id="noteValidated"></div>
+    <div class="order-cards" id="validatedList"></div>
+  </section>
+
+  <section id="view-loadings" class="view">
+    <div class="list-head">
+      <h2>Chargements</h2>
+      <select id="chgFilter">
+        <option value="" selected>Tous les statuts</option>
+        <option value="a_charger">À charger</option>
+        <option value="charge">Chargés (en livraison)</option>
+        <option value="livre">Livrés</option>
+        <option value="annule">Annulés</option>
+      </select>
+    </div>
+    <div id="fbLoadings"></div>
+    <div class="credit-total" id="loadingTotal"></div>
+    <div class="panel" id="loadingList"></div>
+  </section>
+
+  <section id="view-credits" class="view">
+    <div class="list-head"><h2>Chargements avec un reste à payer</h2></div>
+    <div id="fbCredits"></div>
+    <div class="credit-total" id="creditTotal"></div>
+    <div class="panel" id="creditList"></div>
+    <h2 class="sec-title">Avances clients disponibles</h2>
+    <div class="panel" id="avanceList"></div>
+  </section>
+
+  <!-- Chèques : sélection et bordereaux de remise à la banque -->
+  <section id="view-cheques" class="view">
+    <div class="list-head"><h2>Chèques à remettre à la banque</h2></div>
+    <div id="fbCheques"></div>
+    <label class="check only-open"><input type="checkbox" id="onlyOpen"> Afficher seulement les chèques non totalement liquidés <b id="openCount"></b></label>
+    <div class="panel" id="chequeList"></div>
+    <div class="remit-bar" id="remitBar">
+      <span id="remitInfo">Aucun chèque sélectionné</span>
+      <label>Compte bancaire<select id="remitBank"></select></label>
+      <button class="btn btn-accent btn-lg" id="remitBtn" disabled>🏦 Créer le bordereau</button>
+    </div>
+
+    <h2 class="sec-title">Bordereaux de remise</h2>
+    <div id="fbBord"></div>
+    <div class="panel" id="bordList"></div>
+  </section>
+
+  <!-- Chargement direct : même principe que la prise de commande du commercial -->
+  <section id="view-direct" class="view">
+    <div class="order-panel" id="dPanel">
+      <div class="client-bar direct-bar">
+        <label class="req-field">Date de chargement *<input type="date" id="dDate"></label>
+        <label class="client-select req-field">Client *<select id="dClient"></select></label>
+        <label class="req-field">Camion (immatriculation) *<input id="dTruck" list="truckList" autocapitalize="characters" placeholder="12345-A-6"></label>
+        <span id="dTruckList"></span>
+      </div>
+      <div class="order-lines-head">
+        <span>Produit</span><span>Sac</span><span class="r">Qté</span><span class="r">Montant</span><span></span>
+      </div>
+      <div class="order-lines" id="dLines"></div>
+      <div class="order-foot">
+        <div class="order-total"><span id="dLineCount">0 produit</span> • <span id="dQty">Qté totale : 0</span>
+          <b id="dTotal">0,00 DH</b></div>
+        <button class="btn btn-light" id="dClear">Vider</button>
+        <button class="btn btn-primary btn-lg" id="dSave">🚚 Enregistrer le chargement</button>
+      </div>
+    </div>
+
+    <div class="client-hint" id="dHint">👆 Sélectionnez d'abord la date, le client et le camion pour pouvoir choisir les produits.</div>
+
+    <div class="filters">
+      <input type="search" id="dSearch" placeholder="🔍 Rechercher un produit…">
+      <div class="chips" id="dCats"></div>
+    </div>
+    <div class="product-grid" id="dGrid"></div>
+  </section>
+
+  <script src="js/store.js"></script>
+  <script src="js/vendeur.js"></script>
+</body>
+</html>

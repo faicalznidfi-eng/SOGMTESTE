@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#2d3480">
+  <title>SOGM — Administration</title>
+  <link rel="icon" type="image/png" href="img/icon-192.png">
+  <link rel="apple-touch-icon" href="img/icon-192.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-page">
+  <aside class="sidebar" id="sidebar">
+    <div class="sb-brand"><img src="img/logo-sm.png" class="sb-logo" alt="SO.G.M"><small>Administration</small></div>
+    <nav>
+      <a href="#dashboard" data-view="dashboard" class="active">📊 Tableau de bord</a>
+      <a href="#orders"    data-view="orders">🧾 Commandes <span class="pill" id="pendingCount"></span></a>
+      <a href="#loadings"  data-view="loadings">🚚 Chargements <span class="pill" id="loadCount"></span></a>
+      <a href="#products"  data-view="products">📦 Produits</a>
+      <a href="#sacs"      data-view="sacs">🛍 Sacs</a>
+      <a href="#clients"   data-view="clients">👥 Clients</a>
+      <a href="#banques"   data-view="banques">🏦 Banques &amp; chèques</a>
+      <a href="#users"     data-view="users">🔐 Utilisateurs</a>
+      <a href="#backup"    data-view="backup">💾 Sauvegarde</a>
+    </nav>
+    <div class="sb-user">
+      <div id="userName"></div>
+      <button class="btn btn-light btn-sm btn-block" id="logoutBtn">Déconnexion</button>
+    </div>
+  </aside>
+  <div class="sb-overlay" id="sbOverlay"></div>
+
+  <div class="main">
+    <header class="admin-top">
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+      <h2 id="pageTitle">Tableau de bord</h2>
+      <div id="topActions"></div>
+    </header>
+    <div class="content" id="content"></div>
+  </div>
+
+  <script src="js/store.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

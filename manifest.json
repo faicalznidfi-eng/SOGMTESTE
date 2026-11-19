@@ -1,0 +1,10 @@
+{
+  "name": "SOGM - Gestion des commandes",
+  "short_name": "SOGM",
+  "start_url": "index.html",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f2f4fa",
+  "theme_color": "#2d3480",
+  "icons": [{ "src": "img/icon-192.png", "sizes": "192x192", "type": "image/png" }]
+}

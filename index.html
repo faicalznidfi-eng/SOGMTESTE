@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#2d3480">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="manifest.json">
+  <title>SOGM — Connexion</title>
+  <link rel="icon" type="image/png" href="img/icon-192.png">
+  <link rel="apple-touch-icon" href="img/icon-192.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="login-page">
+  <main class="login-card">
+    <div class="brand">
+      <img src="img/logo.png" class="login-logo" alt="SO.G.M">
+      <p>Gestion des commandes et des chargements</p>
+      <p class="login-hint">Connectez-vous : votre espace s'ouvre automatiquement selon votre profil.</p>
+    </div>
+
+
+    <form id="loginForm" autocomplete="off">
+      <label>Identifiant
+        <input type="text" id="login" required autofocus autocapitalize="none" placeholder="Votre identifiant">
+      </label>
+      <label>Mot de passe
+        <div class="pwd-wrap">
+          <input type="password" id="pwd" required placeholder="••••••••">
+          <button type="button" class="icon-btn" id="togglePwd" aria-label="Afficher le mot de passe">👁</button>
+        </div>
+      </label>
+      <p class="error" id="loginError"></p>
+      <button type="submit" class="btn btn-primary btn-block btn-lg">Se connecter</button>
+    </form>
+
+    
+  </main>
+
+  <script src="js/store.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>
